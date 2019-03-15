@@ -1,4 +1,4 @@
-package cn.sockstack.shop.services;
+package cn.sockstack.shop.services.services;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

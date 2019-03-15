@@ -1,4 +1,4 @@
-package cn.sockstack.shop.services;
+package cn.sockstack.shop.services.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

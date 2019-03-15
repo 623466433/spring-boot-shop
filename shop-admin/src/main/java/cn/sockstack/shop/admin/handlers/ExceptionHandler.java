@@ -4,6 +4,7 @@ import cn.sockstack.shop.admin.entity.JsonResponseInfo;
 import cn.sockstack.shop.admin.enums.Status;
 import cn.sockstack.shop.admin.exceptions.ApiExcetion;
 import cn.sockstack.shop.admin.exceptions.WebException;
+import cn.sockstack.shop.admin.vo.ResultInfo;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,12 +25,12 @@ public class ExceptionHandler {
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(ApiExcetion.class)
-    public JsonResponseInfo<String> apiException(ApiExcetion excetion) {
-        JsonResponseInfo<String> jsonResponseInfo = new JsonResponseInfo<>();
-        jsonResponseInfo.setCode(Status.EXCEPTION.getCode());
-        jsonResponseInfo.setMessage(excetion.getMessage());
-        jsonResponseInfo.setData(Status.EXCEPTION.getMessage());
+    public ResultInfo<String> apiException(ApiExcetion excetion) {
+        ResultInfo<String> resultInfo = new ResultInfo<>();
+        resultInfo.setCode(Status.EXCEPTION.getCode());
+        resultInfo.setMessage(excetion.getMessage());
+        resultInfo.setData(Status.EXCEPTION.getMessage());
 
-        return jsonResponseInfo;
+        return resultInfo;
     }
 }

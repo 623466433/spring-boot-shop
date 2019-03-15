@@ -3,15 +3,14 @@ package cn.sockstack.shop.admin.enums;
 import lombok.Getter;
 
 @Getter
-public enum Status {
-    SUCCESS(2000, "success"),
-    FAIL(4000, "fail"),
-    EXCEPTION(4001, "发生异常"),
-    ;
+public enum  LoginStatus {
+    SUCCESS(2000, "登陆成功"),
+    FAIL(200, "登陆成功"),
+        ;
     private Integer code;
     private String message;
 
-    Status(Integer code, String message) {
+    LoginStatus(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

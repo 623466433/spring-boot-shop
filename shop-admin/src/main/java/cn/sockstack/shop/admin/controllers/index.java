@@ -1,28 +1,26 @@
 package cn.sockstack.shop.admin.controllers;
 
-import cn.sockstack.shop.data.entity.Admin;
-import cn.sockstack.shop.services.admin.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import javax.servlet.http.HttpSession;
+
+@Controller
 public class index {
-    @Autowired
-    AdminService adminService;
 
+    /**
+     * 首页
+     * @return
+     */
     @GetMapping(value = "/")
-    public String index() {
-        System.out.println("this is admin module index controller");
-        Admin admin =adminService.getAdminInfoByUsername("abcd");
-        System.out.println(admin);
-        if (null != admin) {
-            System.out.println(admin.getId());
-            System.out.println(admin.getUsername());
-            System.out.println(admin.getPassword());
-            System.out.println(admin.getCreatedAt());
-            System.out.println(admin.getUpdatedAt());
-        }
-        return "hello world";
+    public String index(HttpSession session, Model model) {
+        model.addAttribute("username", session.getAttribute("username"));
+        return "index";
+    }
+
+    @GetMapping(value = "/welcome")
+    public String welcome() {
+        return "welcome";
     }
 }
