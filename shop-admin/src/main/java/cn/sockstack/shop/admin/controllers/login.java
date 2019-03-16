@@ -2,6 +2,7 @@ package cn.sockstack.shop.admin.controllers;
 
 import cn.sockstack.shop.admin.enums.LoginStatus;
 import cn.sockstack.shop.admin.enums.SessionEnum;
+import cn.sockstack.shop.admin.enums.Status;
 import cn.sockstack.shop.admin.exceptions.ApiExcetion;
 import cn.sockstack.shop.admin.exceptions.WebException;
 import cn.sockstack.shop.admin.vo.ResultInfo;
@@ -67,5 +68,18 @@ public class login {
             throw new cn.sockstack.shop.admin.exceptions.ApiExcetion(e.getMessage());
         }
 
+    }
+
+    @PostMapping(value = "logout")
+    @ResponseBody
+    public ResultInfo<String> logout(HttpSession session) {
+        session.setAttribute(SessionEnum.SESSION_NAME.getName(), null);
+
+        ResultInfo<String> resultInfo = new ResultInfo<>();
+        resultInfo.setCode(Status.SUCCESS.getCode());
+        resultInfo.setMessage(Status.SUCCESS.getMessage());
+        resultInfo.setData("");
+
+        return  resultInfo;
     }
 }

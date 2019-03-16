@@ -18,7 +18,10 @@ public class index {
     @GetMapping(value = "/")
     public String admin(HttpSession session, Model model) {
         Admin admin = (Admin) session.getAttribute(SessionEnum.SESSION_NAME.getName());
-        model.addAttribute("username", admin.getUsername());
+        if (null != admin) {
+            model.addAttribute("username", admin.getUsername());
+        }
+
         return "index";
     }
 

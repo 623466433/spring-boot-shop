@@ -34,7 +34,9 @@ public class LoginAop {
     /**
      * 已经登录检查切入点
      */
-    @Pointcut(value = "execution(public * cn.sockstack.shop.admin.controllers.login.*(..))")
+    @Pointcut(value = "execution(public * cn.sockstack.shop.admin.controllers.login.*(..))" +
+            "&& !execution(public * cn.sockstack.shop.admin.controllers.login.logout(..))"
+    )
     public void login() {}
 
     /**
