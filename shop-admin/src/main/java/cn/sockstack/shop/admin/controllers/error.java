@@ -10,7 +10,7 @@ public class error implements ErrorController {
 
     @GetMapping(value = "/error")
     public String index(Model model) {
-        model.addAttribute("message", "页面不见了");
+        model.addAttribute("message", "4 0 4");
 
         return "404";
     }

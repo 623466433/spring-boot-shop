@@ -1,5 +1,7 @@
 package cn.sockstack.shop.admin.controllers;
 
+import cn.sockstack.shop.admin.enums.SessionEnum;
+import cn.sockstack.shop.data.entity.Admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,9 @@ public class index {
      * @return
      */
     @GetMapping(value = "/")
-    public String index(HttpSession session, Model model) {
-        model.addAttribute("username", session.getAttribute("username"));
+    public String admin(HttpSession session, Model model) {
+        Admin admin = (Admin) session.getAttribute(SessionEnum.SESSION_NAME.getName());
+        model.addAttribute("username", admin.getUsername());
         return "index";
     }
 

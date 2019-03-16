@@ -14,14 +14,14 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/xadmin.js"></script>
-
+    <style>
+        .not-found{text-align: center;font-size: 90px;height: 100%;min-height: 300px;line-height: 300px;color: #009688;}
+    </style>
 </head>
 <body class="login-bg">
 
 <div class="login layui-anim layui-anim-up">
-    <div class="message">异常</div>
-    <div id="darkbannerwrap"></div>
-    <div th:text="${message}"></div>
+    <div th:text="${message}" class="not-found"></div>
 </div>
 <!-- 底部结束 -->
 </body>

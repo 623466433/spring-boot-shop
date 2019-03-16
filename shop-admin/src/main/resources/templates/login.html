@@ -39,7 +39,7 @@
                   $ = layui.jquery;
               //监听提交
               form.on('submit(login)', function(data){
-                  $.post("/doLogin", data.field, function(res) {
+                  $.post("/login", data.field, function(res) {
                       if (res.code == 2000) {
                           layer.msg(res.message,function(){
                               location.href='/'

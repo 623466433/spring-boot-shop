@@ -1,6 +1,7 @@
 package cn.sockstack.shop.admin.controllers;
 
 import cn.sockstack.shop.admin.enums.LoginStatus;
+import cn.sockstack.shop.admin.enums.SessionEnum;
 import cn.sockstack.shop.admin.exceptions.ApiExcetion;
 import cn.sockstack.shop.admin.exceptions.WebException;
 import cn.sockstack.shop.admin.vo.ResultInfo;
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class login {
-
     @Autowired
     AdminService adminService;
 
@@ -38,7 +38,7 @@ public class login {
      * @param resultInfo
      * @return
      */
-    @PostMapping(value = "doLogin")
+    @PostMapping(value = "login")
     @ResponseBody
     public ResultInfo<Admin> doLogin(
             ResultInfo<Admin> resultInfo,
@@ -51,7 +51,8 @@ public class login {
             //1、登陆
             Admin admin = adminService.doLogin(username, password);
             //2、设置session
-            session.setAttribute("username", admin.getUsername());
+            admin.setPassword("********");
+            session.setAttribute(SessionEnum.SESSION_NAME.getName(), admin);
 
             resultInfo.setCode(LoginStatus.SUCCESS.getCode());
             resultInfo.setMessage(LoginStatus.SUCCESS.getMessage());
